@@ -29,9 +29,8 @@ static Connection conn=null;
 String []selreporte= new String [50];
 
 iniciarReporte(){
-//selreporte[0]="C:/Users/ASUS/Documents/NetBeansProjects/Reportes/src/formularios/Consumo.jasper";
-selreporte[0]="C:/Reportes/src/reportes/Consumo.jasper";
-
+selreporte[0]="C:/Reportes/src/reportes/Consumo.jasper";// contiene la ruta donde se encuentra almacenado el archivo xml que contiene el cuerpo 
+                                                        //del informe.
  try{Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection(Reportes.Basedatos);
                 }catch(Exception ex){ex.printStackTrace();}
@@ -49,44 +48,19 @@ try{
 catch(JRException e){System.out.println("ERROR CARGANDO EL REPORTE MAESTRO "+e.getMessage());
 System.exit(3);}
 Map parametro = new HashMap();
-
+/*ENVIA LOS PARÁMETROS PARA LA CREACIÓN DEL INFORME*/
 parametro.put("Fechainicial",Fechaini);
 parametro.put("Fechafinal",Fechafin);
 parametro.put("tipovariable",variable);
 JasperPrint jasperPrint=JasperFillManager.fillReport(masterReport,parametro ,conn);
 JasperViewer jviewer= new JasperViewer(jasperPrint,false);
-//jviewer.setTitle("INFORME NIVEL DE GASES");
+jviewer.setTitle("INFORME DE LAS VARIABLES DEL SISTEMA");
 jviewer.setVisible(true);}catch(JRException e){System.out.println("ERROR CARGANDO EL REPORTE MAESTRO "+e.getMessage());
 System.exit(3);}
 
-   // }catch(Exception j){System.out.println("MENSAJE DE ERROR"+j.getMessage());}
+   
 }
 
-public void grafico(String Fechaini,String Fechafin,String Horaini,String Horafin, String variable){
-  try{
-        
-      //  System.out.println(Fechaini+" "+Fechafin+" "+Horaini+" "+Horafin+" "+reactor+" "+ gas);
-String  archivo =selreporte[1];
-JasperReport masterReport=null;
-try{
-      masterReport=(JasperReport)JRLoader.loadObjectFromFile(archivo);}
-catch(JRException e){System.out.println("ERROR CARGANDO EL REPORTE MAESTRO "+e.getMessage());
-System.exit(3);}
-Map parametro = new HashMap();
-
-parametro.put("Fechainicial",Fechaini);
-parametro.put("Fechafinal",Fechafin);
-parametro.put("HoraIni",Horaini);
-parametro.put("HoraFin",Horafin);
-parametro.put("tipovariable",variable);
-JasperPrint jasperPrint=JasperFillManager.fillReport(masterReport,parametro ,conn);
-JasperViewer jviewer= new JasperViewer(jasperPrint,false);
-jviewer.setTitle("INFORME NIVEL DE GASES");
-jviewer.setVisible(true);}catch(JRException e){System.out.println("ERROR CARGANDO EL REPORTE MAESTRO "+e.getMessage());
-System.exit(3);}
-
-   // }catch(Exception j){System.out.println("MENSAJE DE ERROR"+j.getMessage());}
-}
 
 
 

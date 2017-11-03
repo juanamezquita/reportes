@@ -4,7 +4,7 @@
  */
 
 /*
- * Kardex.java
+ * Reportes.java es el contenedor de los elementos de visualización
  *
  * Created on 10-Oct-2017, 16:23:39
  */
@@ -22,15 +22,16 @@ Connection conn = null;
 Statement stmt=null;
 ResultSet rs=null;
 
+//debe modificar la cadena string con los datos correspondientes a su base de datos.
 public static String Basedatos="jdbc:mysql://senaiot.mysql.database.azure.com:3306/sensores?"+"user=juan_amezquita@senaiot&password=Octubre811015";
 
 
-private iniciarReporte jasper;
+private iniciarReporte jasper; //crea el objeto que permitirá la generación de un reporte mediante la utilización de jasper reports
 
 
     /** Creates new form Kardex */
     public Reportes() {
-        jasper=new iniciarReporte();
+        jasper=new iniciarReporte(); //objeto que guarda los parámetros para la creación de un reporte
           initComponents();
     }
 
@@ -188,7 +189,7 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
 
 
 private void GenerarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarMousePressed
-// TODO add your handling code here:
+// Genera el reporte de acuerdo a las variables seleccionadas
      String variable="";
     switch (ListVariable.getSelectedIndex()) {
         case 0:
