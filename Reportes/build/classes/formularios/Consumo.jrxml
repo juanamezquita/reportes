@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ae8a601-ddf5-439a-9c3d-bf5714e86c37">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Horaini" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Horafin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipovariable" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fechainicial" class="java.lang.String"/>
+	<parameter name="Fechafinal" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select fecha,hora,variable,valor from sensores.datos where  variable=$P{tipovariable} and fecha>=$P{Fechainicial} and fecha<=$P{Fechafinal}
+and hora>=$P{Horaini} and hora<=$P{Horafin};]]>
+	</queryString>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="variable" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="526">
+			<image>
+				<reportElement x="0" y="192" width="306" height="283" uuid="9a4b7593-c288-489b-88d1-c903c12813cd"/>
+				<imageExpression><![CDATA["C:\\ScadalabSolar\\src\\Imagenes\\IMAGEN SISTEMA.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="31" y="176" width="100" height="26" forecolor="#669900" backcolor="#336600" uuid="97058869-a77c-477a-8a6a-99b80bee1cda"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA]]></text>
+			</staticText>
+		</band>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<image>
+				<reportElement x="428" y="0" width="393" height="91" uuid="f7d13508-e0bc-414f-93f0-88859fae5a20"/>
+				<imageExpression><![CDATA["C:\\ScadalabSolar\\src\\Reportes\\leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="60" y="0" width="112" height="82" uuid="5a4f1db3-6ba7-4aba-9971-dd7073eba059"/>
+				<imageExpression><![CDATA["C:\\ScadalabSolar\\src\\Imagenes\\logosena.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="145" y="22" width="305" height="48" forecolor="#339900" uuid="364b74a3-1dfc-49f7-8d43-9440e477a4fb"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TECNOPARQUE BOGOTÁ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56">
+			<staticText>
+				<reportElement x="328" y="20" width="185" height="20" forecolor="#999900" uuid="af04f00b-d699-41eb-94e7-e9c11b01e17b"/>
+				<text><![CDATA[LABORATORIO DE ENERGÍA SOLAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="385" height="30" forecolor="#669900" uuid="9f17426e-6b7c-4c78-be57-fdf9362d01e5"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LINEA DE ELECTRÓNICA Y TELECOMUNICACIONES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-20" y="40" width="841" height="10" backcolor="#339900" uuid="df5b26a4-a6ac-4869-ad42-ce15bfc5220b"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31">
+			<staticText>
+				<reportElement x="421" y="2" width="100" height="20" uuid="3f90f527-cbb7-4e53-aa46-7abd45247c52"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="2" width="100" height="20" uuid="fabd9059-72e1-4591-ba70-b98592b46db7"/>
+				<text><![CDATA[HORA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="640" y="2" width="100" height="20" uuid="7dce1a2d-c448-4edc-b2a8-17ee5e78ce40"/>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="145" y="2" width="111" height="23" forecolor="#669900" backcolor="#669900" uuid="63084ec3-e93b-4a2f-8c6b-b3a08b47c4ff"/>
+				<textElement>
+					<font size="16" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variable}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="357" y="24" width="433" height="1" uuid="ba75c085-57db-4a75-8357-b4754563b6ae"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="2" width="118" height="23" forecolor="#669900" uuid="b2b15384-8115-445c-87b0-52fc09b9f12f"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="413" y="0" width="48" height="20" uuid="5d87bd60-26ac-4dc8-b533-5289d2e3485d"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="526" y="0" width="100" height="20" uuid="8a0b073b-c82c-4558-9344-82e8d5cab869"/>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="0" width="100" height="20" uuid="e6d83164-3db9-47d8-8d4d-8075bdb0e7e0"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="9" width="841" height="20" forecolor="#339900" backcolor="#669900" uuid="4709aaf8-9d2e-479b-973d-0ed6d59fc500"/>
+			</rectangle>
+			<textField>
+				<reportElement x="652" y="9" width="111" height="20" uuid="009a221e-2d95-4c1d-a48f-a2864df09076"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="9" width="40" height="20" uuid="7c5f5afd-3f49-4e4e-8e71-889dbdcf6114"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="87" y="9" width="100" height="20" uuid="b301223a-512a-490c-8f26-27d840fec230"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="173">
+			<stackedAreaChart>
+				<chart>
+					<reportElement x="275" y="11" width="527" height="162" uuid="24c8af4a-ee6a-4b71-b39d-a99adc72ba62"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{variable}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{fecha}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{valor}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+		</band>
+	</summary>
+</jasperReport>
